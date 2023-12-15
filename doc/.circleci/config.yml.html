@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>config.yml</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = ".circleci\\config.yml";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>config.yml</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="yaml"><span class="hljs-attr">version:</span> <span class="hljs-number">2.1</span>
+
+<span class="hljs-attr">orbs:</span>
+  <span class="hljs-attr">nx:</span> <span class="hljs-string">nrwl/nx@1.6.1</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">agent:</span>
+    <span class="hljs-attr">docker:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">cimg/node:lts-browsers</span>
+    <span class="hljs-attr">parameters:</span>
+      <span class="hljs-attr">ordinal:</span>
+        <span class="hljs-attr">type:</span> <span class="hljs-string">integer</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">checkout</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npm</span> <span class="hljs-string">ci</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Start</span> <span class="hljs-string">the</span> <span class="hljs-string">agent</span> <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">parameters.ordinal</span> <span class="hljs-string">&gt;&gt;</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx-cloud</span> <span class="hljs-string">start-agent</span>
+          <span class="hljs-attr">no_output_timeout:</span> <span class="hljs-string">60m</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-attr">docker:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">image:</span> <span class="hljs-string">cimg/node:lts-browsers</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-attr">NX_CLOUD_DISTRIBUTED_EXECUTION:</span> <span class="hljs-string">'true'</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">checkout</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">dependencies</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npm</span> <span class="hljs-string">ci</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">nx/set-shas:</span>
+          <span class="hljs-attr">main-branch-name:</span> <span class="hljs-string">'master'</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Initialize</span> <span class="hljs-string">the</span> <span class="hljs-string">Nx</span> <span class="hljs-string">Cloud</span> <span class="hljs-string">distributed</span> <span class="hljs-string">CI</span> <span class="hljs-string">run</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx-cloud</span> <span class="hljs-string">start-ci-run</span> <span class="hljs-string">--stop-agents-after="build"</span> <span class="hljs-string">--agent-count=3</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Check</span> <span class="hljs-string">format</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx-cloud</span> <span class="hljs-string">record</span> <span class="hljs-string">--</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx</span> <span class="hljs-string">format:check</span> <span class="hljs-string">--base=$NX_BASE</span> <span class="hljs-string">--head=$NX_HEAD</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Run</span> <span class="hljs-string">lint</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx</span> <span class="hljs-string">affected</span> <span class="hljs-string">--base=$NX_BASE</span> <span class="hljs-string">--head=$NX_HEAD</span> <span class="hljs-string">--target=lint</span> <span class="hljs-string">--parallel=3</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Run</span> <span class="hljs-string">test</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx</span> <span class="hljs-string">affected</span> <span class="hljs-string">--base=$NX_BASE</span> <span class="hljs-string">--head=$NX_HEAD</span> <span class="hljs-string">--target=test</span> <span class="hljs-string">--parallel=3</span> <span class="hljs-string">--ci</span> <span class="hljs-string">--code-coverage</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Run</span> <span class="hljs-string">build</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx</span> <span class="hljs-string">affected</span> <span class="hljs-string">--base=$NX_BASE</span> <span class="hljs-string">--head=$NX_HEAD</span> <span class="hljs-string">--target=build</span> <span class="hljs-string">--parallel=3</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Stop</span> <span class="hljs-string">all</span> <span class="hljs-string">agents</span>
+          <span class="hljs-attr">command:</span> <span class="hljs-string">npx</span> <span class="hljs-string">nx-cloud</span> <span class="hljs-string">stop-all-agents</span>
+          <span class="hljs-attr">when:</span> <span class="hljs-string">always</span>
+
+<span class="hljs-attr">workflows:</span>
+  <span class="hljs-attr">version:</span> <span class="hljs-number">2</span>
+
+  <span class="hljs-attr">circle-ci:</span>
+    <span class="hljs-attr">jobs:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">agent:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Nx</span> <span class="hljs-string">Cloud</span> <span class="hljs-string">Agent</span> <span class="hljs-string">&lt;&lt;</span> <span class="hljs-string">matrix.ordinal</span> <span class="hljs-string">&gt;&gt;</span>
+          <span class="hljs-attr">matrix:</span>
+            <span class="hljs-attr">parameters:</span>
+              <span class="hljs-attr">ordinal:</span> <span class="hljs-string">[1,</span> <span class="hljs-number">2</span><span class="hljs-string">,</span> <span class="hljs-number">3</span><span class="hljs-string">]</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">main:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">Nx</span> <span class="hljs-string">Cloud</span> <span class="hljs-string">Main</span>
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

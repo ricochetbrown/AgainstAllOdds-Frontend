@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>project.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../../doc-style.css" />
+  <script src="../../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../../";
+    var thisFile = "apps\\evolution\\project.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="../../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>project.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"evolution"</span>,
+  <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"../../node_modules/nx/schemas/project-schema.json"</span>,
+  <span class="hljs-attr">"projectType"</span>: <span class="hljs-string">"application"</span>,
+  <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"against-all-odds"</span>,
+  <span class="hljs-attr">"sourceRoot"</span>: <span class="hljs-string">"apps/evolution/src"</span>,
+  <span class="hljs-attr">"tags"</span>: [],
+  <span class="hljs-attr">"targets"</span>: {
+    <span class="hljs-attr">"build"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/angular:webpack-browser"</span>,
+      <span class="hljs-attr">"outputs"</span>: [<span class="hljs-string">"{options.outputPath}"</span>],
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"outputPath"</span>: <span class="hljs-string">"dist/apps/evolution/browser"</span>,
+        <span class="hljs-attr">"index"</span>: <span class="hljs-string">"apps/evolution/src/index.html"</span>,
+        <span class="hljs-attr">"main"</span>: <span class="hljs-string">"apps/evolution/src/main.ts"</span>,
+        <span class="hljs-attr">"polyfills"</span>: [<span class="hljs-string">"zone.js"</span>],
+        <span class="hljs-attr">"tsConfig"</span>: <span class="hljs-string">"apps/evolution/tsconfig.app.json"</span>,
+        <span class="hljs-attr">"inlineStyleLanguage"</span>: <span class="hljs-string">"scss"</span>,
+        <span class="hljs-attr">"assets"</span>: [
+          <span class="hljs-string">"apps/evolution/src/favicon.ico"</span>,
+          <span class="hljs-string">"apps/evolution/src/assets"</span>
+        ],
+        <span class="hljs-attr">"styles"</span>: [<span class="hljs-string">"apps/evolution/src/styles.scss"</span>],
+        <span class="hljs-attr">"scripts"</span>: [],
+        <span class="hljs-attr">"customWebpackConfig"</span>: {
+          <span class="hljs-attr">"path"</span>: <span class="hljs-string">"apps/evolution/webpack.config.ts"</span>
+        }
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"budgets"</span>: [
+            {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"initial"</span>,
+              <span class="hljs-attr">"maximumWarning"</span>: <span class="hljs-string">"500kb"</span>,
+              <span class="hljs-attr">"maximumError"</span>: <span class="hljs-string">"1mb"</span>
+            },
+            {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"anyComponentStyle"</span>,
+              <span class="hljs-attr">"maximumWarning"</span>: <span class="hljs-string">"2kb"</span>,
+              <span class="hljs-attr">"maximumError"</span>: <span class="hljs-string">"4kb"</span>
+            }
+          ],
+          <span class="hljs-attr">"outputHashing"</span>: <span class="hljs-string">"all"</span>,
+          <span class="hljs-attr">"customWebpackConfig"</span>: {
+            <span class="hljs-attr">"path"</span>: <span class="hljs-string">"apps/evolution/webpack.prod.config.ts"</span>
+          }
+        },
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"buildOptimizer"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"optimization"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"vendorChunk"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">"extractLicenses"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">"namedChunks"</span>: <span class="hljs-literal">true</span>
+        }
+      },
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"production"</span>
+    },
+    <span class="hljs-attr">"serve"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/angular:dev-server"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"port"</span>: <span class="hljs-number">4202</span>,
+        <span class="hljs-attr">"publicHost"</span>: <span class="hljs-string">"http://localhost:4202"</span>
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build:production"</span>
+        },
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build:development"</span>
+        }
+      },
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"development"</span>
+    },
+    <span class="hljs-attr">"extract-i18n"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@angular-devkit/build-angular:extract-i18n"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build"</span>
+      }
+    },
+    <span class="hljs-attr">"lint"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/eslint:lint"</span>,
+      <span class="hljs-attr">"outputs"</span>: [<span class="hljs-string">"{options.outputFile}"</span>]
+    },
+    <span class="hljs-attr">"test"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/jest:jest"</span>,
+      <span class="hljs-attr">"outputs"</span>: [<span class="hljs-string">"{workspaceRoot}/coverage/{projectRoot}"</span>],
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"jestConfig"</span>: <span class="hljs-string">"apps/evolution/jest.config.ts"</span>
+      }
+    },
+    <span class="hljs-attr">"server"</span>: {
+      <span class="hljs-attr">"dependsOn"</span>: [<span class="hljs-string">"build"</span>],
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/angular:webpack-server"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"outputPath"</span>: <span class="hljs-string">"dist/apps/evolution/server"</span>,
+        <span class="hljs-attr">"main"</span>: <span class="hljs-string">"apps/evolution/server.ts"</span>,
+        <span class="hljs-attr">"tsConfig"</span>: <span class="hljs-string">"apps/evolution/tsconfig.server.json"</span>,
+        <span class="hljs-attr">"inlineStyleLanguage"</span>: <span class="hljs-string">"scss"</span>,
+        <span class="hljs-attr">"customWebpackConfig"</span>: {
+          <span class="hljs-attr">"path"</span>: <span class="hljs-string">"apps/evolution/webpack.server.config.ts"</span>
+        }
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"outputHashing"</span>: <span class="hljs-string">"media"</span>
+        },
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"buildOptimizer"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"optimization"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"sourceMap"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">"extractLicenses"</span>: <span class="hljs-literal">false</span>,
+          <span class="hljs-attr">"vendorChunk"</span>: <span class="hljs-literal">true</span>
+        }
+      },
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"production"</span>
+    },
+    <span class="hljs-attr">"serve-ssr"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@angular-devkit/build-angular:ssr-dev-server"</span>,
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"browserTarget"</span>: <span class="hljs-string">"evolution:build:development"</span>,
+          <span class="hljs-attr">"serverTarget"</span>: <span class="hljs-string">"evolution:server:development"</span>
+        },
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"browserTarget"</span>: <span class="hljs-string">"evolution:build:production"</span>,
+          <span class="hljs-attr">"serverTarget"</span>: <span class="hljs-string">"evolution:server:production"</span>
+        }
+      },
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"development"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"port"</span>: <span class="hljs-number">4202</span>
+      }
+    },
+    <span class="hljs-attr">"prerender"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@angular-devkit/build-angular:prerender"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"routes"</span>: [<span class="hljs-string">"/"</span>]
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"browserTarget"</span>: <span class="hljs-string">"evolution:build:development"</span>,
+          <span class="hljs-attr">"serverTarget"</span>: <span class="hljs-string">"evolution:server:development"</span>
+        },
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"browserTarget"</span>: <span class="hljs-string">"evolution:build:production"</span>,
+          <span class="hljs-attr">"serverTarget"</span>: <span class="hljs-string">"evolution:server:production"</span>
+        }
+      },
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"production"</span>
+    },
+    <span class="hljs-attr">"serve-static"</span>: {
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"@nx/web:file-server"</span>,
+      <span class="hljs-attr">"defaultConfiguration"</span>: <span class="hljs-string">"production"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build"</span>,
+        <span class="hljs-attr">"port"</span>: <span class="hljs-number">4202</span>,
+        <span class="hljs-attr">"watch"</span>: <span class="hljs-literal">false</span>
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"development"</span>: {
+          <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build:development"</span>
+        },
+        <span class="hljs-attr">"production"</span>: {
+          <span class="hljs-attr">"buildTarget"</span>: <span class="hljs-string">"evolution:build:production"</span>
+        }
+      }
+    },
+    <span class="hljs-attr">"static-server"</span>: {
+      <span class="hljs-attr">"dependsOn"</span>: [<span class="hljs-string">"build"</span>, <span class="hljs-string">"server"</span>],
+      <span class="hljs-attr">"executor"</span>: <span class="hljs-string">"nx:run-commands"</span>,
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"command"</span>: <span class="hljs-string">"PORT=4202 node dist/apps/evolution/server/main.js"</span>
+      }
+    }
+  }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

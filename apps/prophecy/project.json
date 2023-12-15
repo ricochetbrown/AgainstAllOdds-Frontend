@@ -1,0 +1,174 @@
+{
+  "name": "prophecy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "against-all-odds",
+  "sourceRoot": "apps/prophecy/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/prophecy/browser",
+        "index": "apps/prophecy/src/index.html",
+        "main": "apps/prophecy/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/prophecy/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/prophecy/src/favicon.ico", "apps/prophecy/src/assets"],
+        "styles": ["apps/prophecy/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/prophecy/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/prophecy/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4203,
+        "publicHost": "http://localhost:4203"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "prophecy:build:production"
+        },
+        "development": {
+          "buildTarget": "prophecy:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "prophecy:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/prophecy/jest.config.ts"
+      }
+    },
+    "server": {
+      "dependsOn": ["build"],
+      "executor": "@nx/angular:webpack-server",
+      "options": {
+        "outputPath": "dist/apps/prophecy/server",
+        "main": "apps/prophecy/server.ts",
+        "tsConfig": "apps/prophecy/tsconfig.server.json",
+        "inlineStyleLanguage": "scss",
+        "customWebpackConfig": {
+          "path": "apps/prophecy/webpack.server.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "prophecy:build:development",
+          "serverTarget": "prophecy:server:development"
+        },
+        "production": {
+          "browserTarget": "prophecy:build:production",
+          "serverTarget": "prophecy:server:production"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4203
+      }
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "prophecy:build:development",
+          "serverTarget": "prophecy:server:development"
+        },
+        "production": {
+          "browserTarget": "prophecy:build:production",
+          "serverTarget": "prophecy:server:production"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "prophecy:build",
+        "port": 4203,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "prophecy:build:development"
+        },
+        "production": {
+          "buildTarget": "prophecy:build:production"
+        }
+      }
+    },
+    "static-server": {
+      "dependsOn": ["build", "server"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "PORT=4203 node dist/apps/prophecy/server/main.js"
+      }
+    }
+  }
+}

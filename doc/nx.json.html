@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nx.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "nx.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>nx.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+  <span class="hljs-attr">"$schema"</span>: <span class="hljs-string">"./node_modules/nx/schemas/nx-schema.json"</span>,
+  <span class="hljs-attr">"affected"</span>: {
+    <span class="hljs-attr">"defaultBase"</span>: <span class="hljs-string">"master"</span>
+  },
+  <span class="hljs-attr">"targetDefaults"</span>: {
+    <span class="hljs-attr">"build"</span>: {
+      <span class="hljs-attr">"cache"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"dependsOn"</span>: [<span class="hljs-string">"^build"</span>],
+      <span class="hljs-attr">"inputs"</span>: [<span class="hljs-string">"production"</span>, <span class="hljs-string">"^production"</span>]
+    },
+    <span class="hljs-attr">"lint"</span>: {
+      <span class="hljs-attr">"cache"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"inputs"</span>: [
+        <span class="hljs-string">"default"</span>,
+        <span class="hljs-string">"{workspaceRoot}/.eslintrc.json"</span>,
+        <span class="hljs-string">"{workspaceRoot}/.eslintignore"</span>,
+        <span class="hljs-string">"{workspaceRoot}/eslint.config.js"</span>
+      ]
+    },
+    <span class="hljs-attr">"@nx/jest:jest"</span>: {
+      <span class="hljs-attr">"cache"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"inputs"</span>: [<span class="hljs-string">"default"</span>, <span class="hljs-string">"^production"</span>, <span class="hljs-string">"{workspaceRoot}/jest.preset.js"</span>],
+      <span class="hljs-attr">"options"</span>: {
+        <span class="hljs-attr">"passWithNoTests"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"configurations"</span>: {
+        <span class="hljs-attr">"ci"</span>: {
+          <span class="hljs-attr">"ci"</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">"codeCoverage"</span>: <span class="hljs-literal">true</span>
+        }
+      }
+    },
+    <span class="hljs-attr">"e2e"</span>: {
+      <span class="hljs-attr">"cache"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"inputs"</span>: [<span class="hljs-string">"default"</span>, <span class="hljs-string">"^production"</span>]
+    },
+    <span class="hljs-attr">"server"</span>: {
+      <span class="hljs-attr">"cache"</span>: <span class="hljs-literal">true</span>
+    }
+  },
+  <span class="hljs-attr">"namedInputs"</span>: {
+    <span class="hljs-attr">"default"</span>: [<span class="hljs-string">"{projectRoot}/**/*"</span>, <span class="hljs-string">"sharedGlobals"</span>],
+    <span class="hljs-attr">"production"</span>: [
+      <span class="hljs-string">"default"</span>,
+      <span class="hljs-string">"!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)"</span>,
+      <span class="hljs-string">"!{projectRoot}/tsconfig.spec.json"</span>,
+      <span class="hljs-string">"!{projectRoot}/jest.config.[jt]s"</span>,
+      <span class="hljs-string">"!{projectRoot}/src/test-setup.[jt]s"</span>,
+      <span class="hljs-string">"!{projectRoot}/test-setup.[jt]s"</span>,
+      <span class="hljs-string">"!{projectRoot}/.eslintrc.json"</span>,
+      <span class="hljs-string">"!{projectRoot}/eslint.config.js"</span>
+    ],
+    <span class="hljs-attr">"sharedGlobals"</span>: []
+  },
+  <span class="hljs-attr">"nxCloudAccessToken"</span>: <span class="hljs-string">"MmI0OTk0MmQtYWRkNy00ZGZmLWFiZDMtNTEzYThjNWFlNmU5fHJlYWQtd3JpdGU="</span>,
+  <span class="hljs-attr">"generators"</span>: {
+    <span class="hljs-attr">"@nx/angular:application"</span>: {
+      <span class="hljs-attr">"style"</span>: <span class="hljs-string">"scss"</span>,
+      <span class="hljs-attr">"linter"</span>: <span class="hljs-string">"eslint"</span>,
+      <span class="hljs-attr">"unitTestRunner"</span>: <span class="hljs-string">"jest"</span>,
+      <span class="hljs-attr">"e2eTestRunner"</span>: <span class="hljs-string">"playwright"</span>
+    },
+    <span class="hljs-attr">"@nx/angular:library"</span>: {
+      <span class="hljs-attr">"linter"</span>: <span class="hljs-string">"eslint"</span>,
+      <span class="hljs-attr">"unitTestRunner"</span>: <span class="hljs-string">"jest"</span>
+    },
+    <span class="hljs-attr">"@nx/angular:component"</span>: {
+      <span class="hljs-attr">"style"</span>: <span class="hljs-string">"scss"</span>
+    }
+  }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

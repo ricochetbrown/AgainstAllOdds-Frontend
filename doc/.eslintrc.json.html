@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>.eslintrc.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = ".eslintrc.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>.eslintrc.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+  <span class="hljs-attr">"root"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"ignorePatterns"</span>: [<span class="hljs-string">"**/*"</span>],
+  <span class="hljs-attr">"plugins"</span>: [<span class="hljs-string">"@nx"</span>],
+  <span class="hljs-attr">"overrides"</span>: [
+    {
+      <span class="hljs-attr">"files"</span>: [<span class="hljs-string">"*.ts"</span>, <span class="hljs-string">"*.tsx"</span>, <span class="hljs-string">"*.js"</span>, <span class="hljs-string">"*.jsx"</span>],
+      <span class="hljs-attr">"rules"</span>: {
+        <span class="hljs-attr">"@nx/enforce-module-boundaries"</span>: [
+          <span class="hljs-string">"error"</span>,
+          {
+            <span class="hljs-attr">"enforceBuildableLibDependency"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"allow"</span>: [],
+            <span class="hljs-attr">"depConstraints"</span>: [
+              {
+                <span class="hljs-attr">"sourceTag"</span>: <span class="hljs-string">"*"</span>,
+                <span class="hljs-attr">"onlyDependOnLibsWithTags"</span>: [<span class="hljs-string">"*"</span>]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      <span class="hljs-attr">"files"</span>: [<span class="hljs-string">"*.ts"</span>, <span class="hljs-string">"*.tsx"</span>],
+      <span class="hljs-attr">"extends"</span>: [<span class="hljs-string">"plugin:@nx/typescript"</span>],
+      <span class="hljs-attr">"rules"</span>: {}
+    },
+    {
+      <span class="hljs-attr">"files"</span>: [<span class="hljs-string">"*.js"</span>, <span class="hljs-string">"*.jsx"</span>],
+      <span class="hljs-attr">"extends"</span>: [<span class="hljs-string">"plugin:@nx/javascript"</span>],
+      <span class="hljs-attr">"rules"</span>: {}
+    },
+    {
+      <span class="hljs-attr">"files"</span>: [<span class="hljs-string">"*.spec.ts"</span>, <span class="hljs-string">"*.spec.tsx"</span>, <span class="hljs-string">"*.spec.js"</span>, <span class="hljs-string">"*.spec.jsx"</span>],
+      <span class="hljs-attr">"env"</span>: {
+        <span class="hljs-attr">"jest"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"rules"</span>: {}
+    }
+  ]
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
