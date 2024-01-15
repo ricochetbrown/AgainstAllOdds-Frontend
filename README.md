@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d6ce0b67-d414-4656-add4-af12b86e1264/deploy-status)](https://app.netlify.com/sites/againstallodds/deploys)
+
+
+
 # AgainstAllOdds
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
